@@ -18,11 +18,34 @@ export const NetworkProvider = ({ children }) => {
   const [scheduledReports, setScheduledReports] = useState(INITIAL_SCHEDULED_REPORTS);
   const [syslogStream, setSyslogStream] = useState(INITIAL_SYSLOG_STREAM);
 
-  // App Navigation & Filters
-  const [activeTab, setActiveTab] = useState('dashboard'); // dashboard | topology | performance | alerts | reports | settings
+  // App Navigation & Module Management
+  const [activeTab, setActiveTab] = useState('overview'); // overview | device-inventory | topology | performance | alerts | settings | dashboard | reports
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
   const [liveSimulation, setLiveSimulation] = useState(true);
   const [lastSyncTime, setLastSyncTime] = useState(new Date().toLocaleTimeString());
+
+  // Determine current active module based on activeTab
+  let activeModule = 'overview';
+  if (['device-inventory', 'topology'].includes(activeTab)) {
+    activeModule = 'module1';
+  } else if (['performance', 'alerts', 'settings'].includes(activeTab)) {
+    activeModule = 'module2';
+  } else if (['dashboard', 'reports'].includes(activeTab)) {
+    activeModule = 'module3';
+  }
+
+  // Quick module switcher helper
+  const selectModule = (moduleId, subTabId) => {
+    if (moduleId === 'overview') {
+      setActiveTab('overview');
+    } else if (moduleId === 'module1') {
+      setActiveTab(subTabId || 'device-inventory');
+    } else if (moduleId === 'module2') {
+      setActiveTab(subTabId || 'performance');
+    } else if (moduleId === 'module3') {
+      setActiveTab(subTabId || 'dashboard');
+    }
+  };
 
   // Search & Filter States
   const [searchQuery, setSearchQuery] = useState('');
@@ -208,6 +231,8 @@ export const NetworkProvider = ({ children }) => {
         thresholds,
         scheduledReports,
         syslogStream,
+        activeModule,
+        selectModule,
         activeTab,
         setActiveTab,
         selectedDeviceId,

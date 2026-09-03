@@ -86,6 +86,31 @@ export const ReportManagement = () => {
 
   return (
     <div className="p-4 space-y-4 font-mono">
+      {/* Module 3 Context Header Banner */}
+      <div className="bg-[#151d30] border border-[#1e293b] rounded-lg p-3 flex flex-wrap items-center justify-between gap-3 shadow-md font-sans no-print">
+        <div className="flex items-center gap-2.5">
+          <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-mono font-bold px-2 py-0.5 rounded uppercase tracking-wider">
+            MODULE 3
+          </span>
+          <div>
+            <h2 className="text-sm font-bold text-white flex items-center gap-2">
+              <span>Module 3: Dashboard & Report Management</span>
+              <span className="text-slate-500 text-xs">/</span>
+              <span className="text-emerald-400">Reports & Export Center</span>
+            </h2>
+            <p className="text-[11px] text-slate-400">
+              Publication-grade PDF/CSV report generation, SLA compliance audits, and custom layout configuration.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 text-xs font-mono">
+          <span className="bg-[#0b0f19] px-2.5 py-1 rounded border border-[#1e293b] text-emerald-400 font-bold">
+            99.8% SLA Compliance Verified
+          </span>
+        </div>
+      </div>
+
       {/* Top Header */}
       <div className="bg-[#151d30] border border-[#1e293b] rounded p-3 flex flex-wrap items-center justify-between gap-3 no-print">
         <div className="flex items-center gap-2">

@@ -15,6 +15,31 @@ export const ThresholdSettings = () => {
 
   return (
     <div className="p-4 space-y-4 font-mono">
+      {/* Module 2 Context Header Banner */}
+      <div className="bg-[#151d30] border border-[#1e293b] rounded-lg p-3 flex flex-wrap items-center justify-between gap-3 shadow-md font-sans">
+        <div className="flex items-center gap-2.5">
+          <span className="bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[10px] font-mono font-bold px-2 py-0.5 rounded uppercase tracking-wider">
+            MODULE 2
+          </span>
+          <div>
+            <h2 className="text-sm font-bold text-white flex items-center gap-2">
+              <span>Module 2: Performance Analysis & Alert Generation</span>
+              <span className="text-slate-500 text-xs">/</span>
+              <span className="text-purple-400">Threshold Rules & Settings</span>
+            </h2>
+            <p className="text-[11px] text-slate-400">
+              SNMP polling parameters, alert trigger threshold rules, and Syslog receiver targets.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 text-xs font-mono">
+          <span className="bg-[#0b0f19] px-2.5 py-1 rounded border border-[#1e293b] text-purple-400 font-bold">
+            5 Threshold Policies Active
+          </span>
+        </div>
+      </div>
+
       <div className="bg-[#151d30] border border-[#1e293b] rounded p-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Sliders className="w-5 h-5 text-blue-400" />

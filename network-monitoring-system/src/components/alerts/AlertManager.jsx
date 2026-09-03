@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNetwork } from '../../context/NetworkContext';
 import { StatCard } from '../common/StatCard';
 import {
@@ -55,6 +56,7 @@ export const AlertManager = () => {
   const warningCount = alertLogs.filter(a => a.severity === 'Warning' && a.status !== 'Resolved').length;
   const ackCount = alertLogs.filter(a => a.status === 'Acknowledged').length;
   const resolvedCount = alertLogs.filter(a => a.status === 'Resolved').length;
+  const unresolvedCount = alertLogs.filter(a => a.status !== 'Resolved').length;
 
   const filteredLogs = alertLogs.filter(alt => {
     const matchesSev = severityFilter === 'All' || alt.severity === severityFilter;
@@ -67,7 +69,34 @@ export const AlertManager = () => {
   });
 
   return (
-    <div className="p-4 space-y-4 font-mono">
+    <motion.div className="p-4 space-y-4 font-mono">
+      {/* Module 2 Context Header Banner */}
+      <div className="bg-[#151d30] border border-[#1e293b] rounded-lg p-3 flex flex-wrap items-center justify-between gap-3 shadow-md font-sans">
+        <div className="flex items-center gap-2.5">
+          <span className="bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[10px] font-mono font-bold px-2 py-0.5 rounded uppercase tracking-wider">
+            MODULE 2
+          </span>
+          <div>
+            <h2 className="text-sm font-bold text-white flex items-center gap-2">
+              <span>Module 2: Performance Analysis & Alert Generation</span>
+              <span className="text-slate-500 text-xs">/</span>
+              <span className="text-purple-400">Alert Manager & Incident Triage</span>
+            </h2>
+            <p className="text-[11px] text-slate-400">
+              Active incident alerts, SLA breach tracking, operator acknowledgement, and resolution lifecycle.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 text-xs font-mono">
+          <span className={`px-2.5 py-1 rounded border font-bold ${
+            unresolvedCount > 0 ? 'bg-red-950/60 border-red-800/80 text-red-400' : 'bg-[#0b0f19] border-[#1e293b] text-emerald-400'
+          }`}>
+            {unresolvedCount} Active Unresolved Alerts
+          </span>
+        </div>
+      </div>
+
       {/* Top Incident Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <StatCard
@@ -350,6 +379,6 @@ export const AlertManager = () => {
           </table>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

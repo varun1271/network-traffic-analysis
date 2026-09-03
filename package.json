@@ -1,0 +1,11 @@
+{
+  "name": "computer-network-capstone",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm --prefix network-monitoring-system run dev",
+    "build": "npm --prefix network-monitoring-system run build",
+    "preview": "npm --prefix network-monitoring-system run preview",
+    "lint": "npm --prefix network-monitoring-system run lint"
+  }
+}
